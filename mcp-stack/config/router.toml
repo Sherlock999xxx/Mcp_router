@@ -1,0 +1,10 @@
+[server]
+bind = "127.0.0.1:8848"
+stdio_server = false
+auth_bearer = ""
+allow_origins = ["http://localhost"]
+
+[upstreams.stub]
+kind = "http"
+url = "http://127.0.0.1:9000/mcp"
+bearer = ""
