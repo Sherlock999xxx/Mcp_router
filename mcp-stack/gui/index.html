@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MCP Stack Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>MCP Stack</h1>
+            <nav>
+                <button data-view="dashboard">Dashboard</button>
+                <button data-view="upstreams">Upstreams</button>
+                <button data-view="tools">Tools</button>
+                <button data-view="resources">Resources</button>
+                <button data-view="prompts">Prompts</button>
+                <button data-view="providers">Providers</button>
+                <button data-view="subscriptions">Subscriptions</button>
+                <button data-view="users">Users</button>
+            </nav>
+        </header>
+        <main>
+            <section id="view-dashboard" class="view active">
+                <h2>System Health</h2>
+                <div id="health-status">Loading...</div>
+                <h2>Metrics</h2>
+                <pre id="metrics-output"></pre>
+            </section>
+            <section id="view-upstreams" class="view">
+                <h2>Upstreams</h2>
+                <button id="refresh-upstreams">Refresh</button>
+                <ul id="upstream-list"></ul>
+            </section>
+            <section id="view-tools" class="view">
+                <h2>Tools</h2>
+                <button id="load-tools">Load Tools</button>
+                <ul id="tool-list"></ul>
+            </section>
+            <section id="view-resources" class="view">
+                <h2>Resources</h2>
+                <button id="load-resources">Load Resources</button>
+                <ul id="resource-list"></ul>
+            </section>
+            <section id="view-prompts" class="view">
+                <h2>Prompts</h2>
+                <button id="load-prompts">Load Prompts</button>
+                <ul id="prompt-list"></ul>
+            </section>
+            <section id="view-providers" class="view">
+                <h2>Providers</h2>
+                <p>Provider management coming soon.</p>
+            </section>
+            <section id="view-subscriptions" class="view">
+                <h2>Subscriptions</h2>
+                <p>Subscription management coming soon.</p>
+            </section>
+            <section id="view-users" class="view">
+                <h2>Users</h2>
+                <p>User management coming soon.</p>
+            </section>
+        </main>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
