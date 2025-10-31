@@ -1,0 +1,44 @@
+[package]
+name = "mcp-router"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+authors = ["MCP Stack Maintainers <maintainers@example.com>"]
+description = "Axum-based MCP router with subscription enforcement and GUI"
+
+[dependencies]
+anyhow.workspace = true
+color-eyre.workspace = true
+axum.workspace = true
+axum-extra.workspace = true
+base64.workspace = true
+chrono.workspace = true
+clap = { workspace = true, features = ["derive"] }
+futures.workspace = true
+hyper.workspace = true
+reqwest = { workspace = true, features = ["json", "gzip"] }
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
+sqlx.workspace = true
+tokio = { workspace = true, features = ["full"] }
+tokio-stream.workspace = true
+tower.workspace = true
+tower-http.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+url.workspace = true
+uuid.workspace = true
+thiserror.workspace = true
+async-trait.workspace = true
+metrics.workspace = true
+metrics-exporter-prometheus.workspace = true
+reqwest-eventsource.workspace = true
+ring.workspace = true
+toml.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+axum.workspace = true
+serde_json.workspace = true
+hyper.workspace = true
+tracing-subscriber.workspace = true

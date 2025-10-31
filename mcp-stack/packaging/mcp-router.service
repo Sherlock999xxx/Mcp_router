@@ -1,0 +1,12 @@
+[Unit]
+Description=MCP Router Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/mcp-router --config /etc/mcp/router.toml
+Restart=always
+Environment=RUST_LOG=info
+WorkingDirectory=/var/lib/mcp-router
+
+[Install]
+WantedBy=multi-user.target
