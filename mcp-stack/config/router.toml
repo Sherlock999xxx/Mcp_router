@@ -1,0 +1,32 @@
+[server]
+bind = "127.0.0.1:8848"
+stdio_server = false
+auth_bearer = ""
+allow_origins = ["http://localhost", "http://127.0.0.1"]
+database_url = "sqlite://mcp-router.db"
+
+[upstreams.fs]
+kind = "stdio"
+command = "./target/release/mcp-fs"
+args = ["--root", "./"]
+
+[upstreams.web]
+kind = "stdio"
+command = "./target/release/mcp-webfetch"
+args = []
+
+[upstreams.ollama]
+kind = "http"
+url = "http://127.0.0.1:11434/mcp"
+bearer = ""
+provider_slug = "ollama"
+
+[[providers]]
+slug = "openai"
+display_name = "OpenAI"
+description = "Hosted OpenAI-compatible API"
+
+[[providers]]
+slug = "claude"
+display_name = "Anthropic Claude"
+description = "Anthropic Claude Messages API"

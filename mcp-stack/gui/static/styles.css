@@ -1,0 +1,169 @@
+:root {
+    color-scheme: dark;
+    font-family: "Segoe UI", sans-serif;
+    background-color: #111;
+    color: #f5f5f5;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(180deg, #111 0%, #1d1d1d 100%);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid #333;
+}
+
+.header-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.auth-control {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.auth-control label {
+    font-weight: 600;
+}
+
+.auth-inputs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.auth-inputs input {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    color: #f5f5f5;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+}
+
+.auth-inputs button {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+nav button {
+    margin-right: 0.5rem;
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #444;
+}
+
+main {
+    padding: 2rem;
+}
+
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+.actions {
+    margin-bottom: 1rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 0.5rem 0;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.card {
+    margin-top: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+}
+
+.form-grid label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+    gap: 0.3rem;
+}
+
+input, select, textarea {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    color: #f5f5f5;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+form button {
+    background: #4a67ff;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+form button:hover {
+    background: #5c79ff;
+}
+
+.status {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    min-height: 1.2rem;
+}
+
+.status[data-state="error"] {
+    color: #ff7373;
+}
+
+.status[data-state="success"] {
+    color: #58e39c;
+}
+
+.status[data-state="info"] {
+    color: #a0a0a0;
+}
+
+nav button.active {
+    background: #4a67ff;
+}
