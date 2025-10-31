@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MCP Stack Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="header-top">
+                <h1>MCP Stack</h1>
+                <div class="auth-control">
+                    <label for="auth-token">Admin Token</label>
+                    <div class="auth-inputs">
+                        <input type="password" id="auth-token" placeholder="Optional bearer token">
+                        <button id="clear-token" type="button">Clear</button>
+                    </div>
+                    <div class="status" id="auth-status"></div>
+                </div>
+            </div>
+            <nav>
+                <button data-view="dashboard">Dashboard</button>
+                <button data-view="upstreams">Upstreams</button>
+                <button data-view="tools">Tools</button>
+                <button data-view="resources">Resources</button>
+                <button data-view="prompts">Prompts</button>
+                <button data-view="providers">Providers</button>
+                <button data-view="subscriptions">Subscriptions</button>
+                <button data-view="users">Users</button>
+            </nav>
+        </header>
+        <main>
+            <section id="view-dashboard" class="view active">
+                <h2>System Health</h2>
+                <div id="health-status">Loading...</div>
+                <h2>Metrics</h2>
+                <pre id="metrics-output"></pre>
+            </section>
+            <section id="view-upstreams" class="view">
+                <h2>Upstreams</h2>
+                <div class="actions">
+                    <button id="refresh-upstreams">Refresh</button>
+                </div>
+                <ul id="upstream-list"></ul>
+                <div class="card">
+                    <h3>Register Upstream</h3>
+                    <form id="upstream-form" class="form-grid">
+                        <label>Name<input type="text" name="name" required></label>
+                        <label>Kind
+                            <select name="kind" required>
+                                <option value="http">HTTP</option>
+                                <option value="stdio">STDIO</option>
+                            </select>
+                        </label>
+                        <label>Command<input type="text" name="command" placeholder="Executable for stdio"></label>
+                        <label>Args<input type="text" name="args" placeholder="--flag value"></label>
+                        <label>URL<input type="text" name="url" placeholder="http://.../mcp"></label>
+                        <label>Bearer Token<input type="text" name="bearer" placeholder="Optional bearer"></label>
+                        <label>Provider Slug<input type="text" name="provider_slug" placeholder="openai"></label>
+                        <button type="submit">Save Upstream</button>
+                    </form>
+                    <div class="status" id="upstream-status"></div>
+                </div>
+            </section>
+            <section id="view-tools" class="view">
+                <h2>Tools</h2>
+                <button id="load-tools">Load Tools</button>
+                <ul id="tool-list"></ul>
+            </section>
+            <section id="view-resources" class="view">
+                <h2>Resources</h2>
+                <button id="load-resources">Load Resources</button>
+                <ul id="resource-list"></ul>
+            </section>
+            <section id="view-prompts" class="view">
+                <h2>Prompts</h2>
+                <button id="load-prompts">Load Prompts</button>
+                <ul id="prompt-list"></ul>
+            </section>
+            <section id="view-providers" class="view">
+                <h2>Providers</h2>
+                <div class="actions">
+                    <button id="refresh-providers">Refresh</button>
+                </div>
+                <ul id="provider-list"></ul>
+                <div class="card">
+                    <h3>Add or Update Provider</h3>
+                    <form id="provider-form" class="form-grid">
+                        <label>Slug<input type="text" name="slug" required></label>
+                        <label>Display Name<input type="text" name="display_name" required></label>
+                        <label>Description<textarea name="description" rows="2" placeholder="Optional description"></textarea></label>
+                        <button type="submit">Save Provider</button>
+                    </form>
+                    <div class="status" id="provider-status"></div>
+                </div>
+                <div class="card">
+                    <h3>Store Provider Key</h3>
+                    <form id="provider-key-form" class="form-grid">
+                        <label>Provider Slug<input type="text" name="provider_slug" required></label>
+                        <label>Key Name<input type="text" name="name" required></label>
+                        <label>Value<textarea name="value" rows="2" required></textarea></label>
+                        <button type="submit">Store Key</button>
+                    </form>
+                    <div class="status" id="provider-key-status"></div>
+                </div>
+            </section>
+            <section id="view-subscriptions" class="view">
+                <h2>Subscriptions</h2>
+                <div class="actions">
+                    <button id="refresh-subscriptions">Refresh</button>
+                </div>
+                <ul id="subscription-list"></ul>
+                <div class="card">
+                    <h3>Assign Subscription</h3>
+                    <form id="subscription-form" class="form-grid">
+                        <label>User
+                            <select id="subscription-user-id" name="user_id" required></select>
+                        </label>
+                        <label>Tier
+                            <select name="tier" required>
+                                <option value="basic">Basic</option>
+                                <option value="pro">Pro</option>
+                                <option value="enterprise">Enterprise</option>
+                            </select>
+                        </label>
+                        <label>Max Tokens<input type="number" name="max_tokens" placeholder="Optional"></label>
+                        <label>Max Requests<input type="number" name="max_requests" placeholder="Optional"></label>
+                        <label>Max Concurrent<input type="number" name="max_concurrent" placeholder="Optional"></label>
+                        <button type="submit">Apply Subscription</button>
+                    </form>
+                    <div class="status" id="subscription-status"></div>
+                </div>
+            </section>
+            <section id="view-users" class="view">
+                <h2>Users</h2>
+                <div class="actions">
+                    <button id="refresh-users">Refresh</button>
+                </div>
+                <ul id="user-list"></ul>
+                <div class="card">
+                    <h3>Create User</h3>
+                    <form id="user-form" class="form-grid">
+                        <label>Email<input type="email" name="email" required></label>
+                        <label>Name<input type="text" name="name" placeholder="Optional"></label>
+                        <button type="submit">Create User</button>
+                    </form>
+                    <div class="status" id="user-status"></div>
+                </div>
+                <div class="card">
+                    <h3>Issue API Token</h3>
+                    <form id="token-form" class="form-grid">
+                        <label>User
+                            <select id="token-user-id" name="user_id" required></select>
+                        </label>
+                        <label>Scope<input type="text" name="scope" placeholder="default"></label>
+                        <button type="submit">Issue Token</button>
+                    </form>
+                    <div class="status" id="token-status"></div>
+                </div>
+                <div class="card">
+                    <h3>Issued Tokens</h3>
+                    <ul id="token-list"></ul>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
