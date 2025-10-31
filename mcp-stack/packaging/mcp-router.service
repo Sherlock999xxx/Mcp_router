@@ -1,0 +1,12 @@
+[Unit]
+Description=MCP Router Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/mcp-stack/mcp-router --config /opt/mcp-stack/config/router.toml
+Restart=on-failure
+Environment=RUST_LOG=info
+
+[Install]
+WantedBy=multi-user.target

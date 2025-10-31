@@ -1,0 +1,54 @@
+[workspace]
+members = [
+    "crates/router",
+    "crates/mcp-fs",
+    "crates/mcp-webfetch",
+    "crates/mcp-ollama",
+    "crates/mcp-openai",
+    "crates/mcp-claude"
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+
+[workspace.dependencies]
+anyhow = "1"
+async-trait = "0.1"
+axum = { version = "0.7", features = ["json", "macros", "http1", "ws", "tokio", "tower-log"] }
+base64 = "0.22"
+bytes = "1"
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4", features = ["derive"] }
+color-eyre = "0.6"
+config = "0.14"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_repr = "0.1"
+sqlx = { version = "0.7", features = ["runtime-tokio", "sqlite", "macros", "chrono"] }
+thiserror = "1"
+tokio = { version = "1", features = ["full"] }
+tonbi = "0.4"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt", "json"] }
+uuid = { version = "1", features = ["serde", "v4"] }
+serde_with = "3"
+reqwest = { version = "0.12", features = ["json", "gzip", "stream", "rustls-tls"] }
+reqwest-eventsource = "0.6"
+bytesize = "1"
+parking_lot = "0.12"
+prometheus = "0.13"
+tokio-stream = "0.1"
+tower = "0.4"
+tower-http = { version = "0.5", features = ["auth", "cors", "trace", "fs"] }
+futures = "0.3"
+notify = "6"
+ring = "0.17"
+data-encoding = "2"
+camino = "1"
+walkdir = "2"
+tracing-appender = "0.2"
+include_dir = "0.7"
+hex = "0.4"
+rand = "0.8"
+indexmap = { version = "2", features = ["serde"] }

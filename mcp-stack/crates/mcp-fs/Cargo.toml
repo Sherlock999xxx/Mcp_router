@@ -1,0 +1,23 @@
+[package]
+name = "mcp-fs"
+version = "0.1.0"
+edition = "2021"
+authors = ["MCP Stack Team"]
+license = "MIT OR Apache-2.0"
+description = "Filesystem MCP server"
+
+[dependencies]
+anyhow = { workspace = true }
+async-trait = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_with = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+clap = { workspace = true }
+base64 = { workspace = true }
+walkdir = { workspace = true }
+camino = { workspace = true }
+thiserror = { workspace = true }
+
